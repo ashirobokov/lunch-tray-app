@@ -21,6 +21,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
+import ru.training.lunch.R
 import ru.training.lunch.databinding.FragmentAccompanimentMenuBinding
 import ru.training.lunch.model.OrderViewModel
 
@@ -61,6 +63,7 @@ class AccompanimentMenuFragment : Fragment() {
             lifecycleOwner = viewLifecycleOwner
             viewModel = sharedViewModel
             // TODO: initialize the AccompanimentMenuFragment variables
+            accompanimentMenuFragment = this@AccompanimentMenuFragment
         }
     }
 
@@ -68,7 +71,7 @@ class AccompanimentMenuFragment : Fragment() {
      * Navigate to the checkout fragment.
      */
     fun goToNextScreen() {
-        // TODO: Navigate to the CheckoutFragment
+        findNavController().navigate(R.id.action_accompanimentMenuFragment_to_checkoutFragment)
     }
 
     /**
@@ -77,6 +80,8 @@ class AccompanimentMenuFragment : Fragment() {
     fun cancelOrder() {
         // TODO: Reset order in view model
         // TODO: Navigate back to the [StartFragment] to start over
+        sharedViewModel.resetOrder()
+        findNavController().navigate(R.id.action_accompanimentMenuFragment_to_startOrderFragment)
     }
 
     /**
