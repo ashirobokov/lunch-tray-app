@@ -15,6 +15,7 @@
  */
 package ru.training.lunch.model
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
@@ -23,7 +24,8 @@ import ru.training.lunch.data.DataSource
 import java.text.NumberFormat
 
 class OrderViewModel : ViewModel() {
-
+    // debugging declaration
+    private val TAG = "OrderViewModel"
     // Map of menu items
     val menuItems = DataSource.menuItems
 
@@ -69,6 +71,7 @@ class OrderViewModel : ViewModel() {
      * Set the entree for the order.
      */
     fun setEntree(entree: String) {
+        Log.d(TAG, "*** DEBUG *** par entree : " + entree)
         if (_entree.value != null) {
             previousEntreePrice = _entree.value!!.price
         }
@@ -77,6 +80,7 @@ class OrderViewModel : ViewModel() {
         }
         _entree.value = menuItems.get(entree)
         _entree.value?.let { updateSubtotal(it.price) }
+        Log.d(TAG, "*** DEBUG *** entree value = " + _entree.value.toString())
     }
 
     /**
