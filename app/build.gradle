@@ -56,4 +56,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     androidTestImplementation "androidx.navigation:navigation-testing:2.5.3"
     debugImplementation "androidx.fragment:fragment-testing:1.5.5"
+    debugImplementation "androidx.test:monitor:1.6.1"
 }
